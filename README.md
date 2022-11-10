@@ -1,6 +1,9 @@
 # NonsenseTalk
 
-A tool used to encode text based on base91.(**not encryption, not for now, but considering**)
+A tool used to encode text based on base91:
+
+* **Not encryption, not for now, but considering!**
+* **Not a pure base91 encoder/ecoder!**
 
 # Usage
 
