@@ -4,6 +4,7 @@ import base64
 import base91
 import nonsense
 import urllib.parse
+import binascii
 
 
 if len(sys.argv) <= 1:
@@ -12,6 +13,18 @@ if len(sys.argv) <= 1:
 raw = sys.argv[1]
 
 item_list = []
+
+## hex decode
+try:
+    dec_hex = binascii.a2b_hex(raw).decode()
+    result_hex = {
+        "title": dec_hex,
+        "subtitle": "Hex decode",
+        "arg": dec_hex
+    }
+    item_list.append(result_hex)
+except:
+    pass
 
 ## url decode
 dec_url = urllib.parse.unquote(raw)

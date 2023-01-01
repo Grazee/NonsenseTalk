@@ -4,6 +4,7 @@ import nonsense
 import base64
 import base91
 import urllib.parse
+import binascii
 
 
 if len(sys.argv) <= 1:
@@ -11,6 +12,15 @@ if len(sys.argv) <= 1:
     exit()
 
 raw = sys.argv[1]
+
+## hex
+enc_hex = binascii.b2a_hex(raw.encode()).decode()
+enc_hex = enc_hex.upper()
+result_hex = {
+    "title": enc_hex,
+    "subtitle": "Hex encode",
+    "arg": enc_hex
+}
 
 ## base64
 enc_64 = base64.b64encode(raw.encode()).decode()
@@ -47,7 +57,8 @@ result_nosense = {
 
 ## output
 items = {"items": [
-    result_url,    
+    result_url,
+    result_hex,
     result_64,
     result_91,
     result_nosense,
