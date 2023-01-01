@@ -3,8 +3,7 @@ import json
 import base64
 import base91
 import nonsense
-
-from base91 import decode
+import urllib.parse
 
 
 if len(sys.argv) <= 1:
@@ -13,6 +12,16 @@ if len(sys.argv) <= 1:
 raw = sys.argv[1]
 
 item_list = []
+
+## url decode
+dec_url = urllib.parse.unquote(raw)
+if len(dec_url) < len(raw):
+    result_url = {
+        "title": dec_url,
+        "subtitle": "URL decode",
+        "arg": dec_url
+    }
+    item_list.append(result_url)
 
 ## base64
 try:

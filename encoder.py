@@ -3,6 +3,7 @@ import json
 import nonsense
 import base64
 import base91
+import urllib.parse
 
 
 if len(sys.argv) <= 1:
@@ -17,6 +18,14 @@ result_64 = {
     "title": enc_64,
     "subtitle": "Base64 encode",
     "arg": enc_64
+}
+
+## url encode
+enc_url = urllib.parse.quote(raw)
+result_url = {
+    "title": enc_url,
+    "subtitle": "URL encode",
+    "arg": enc_url
 }
 
 ## base91
@@ -38,6 +47,7 @@ result_nosense = {
 
 ## output
 items = {"items": [
+    result_url,    
     result_64,
     result_91,
     result_nosense,
