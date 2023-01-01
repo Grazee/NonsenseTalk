@@ -1,3 +1,6 @@
+import sys
+import json
+import base64
 from sys import argv
 from base91 import decode
 
@@ -5,13 +8,28 @@ from base91 import decode
 if len(argv) <= 1:
     print("Usage: \n    python3 decoder.py '''input'''")
     exit()
-
 raw = argv[1]
-empty_chars = [0, 1, 2, 3, 4, 5, 6, 7, 14, 15, 16, 17, 18, 19, 20,21,22,23,24,25,28,29,30,31]
 
-a = decode(raw).decode()
-plain = ''
-for i in a:
-    if ord(i) not in empty_chars:
-        plain += i
-print(plain)
+## base64
+dec_64 = base64.b64decode(raw).decode()
+result_64 = {
+    "title": dec_64,
+    "subtitle": "Base64 decode",
+    "arg": dec_64
+}
+
+## nosense
+
+result91 = {
+    "title": plain,
+    "subtitle": "Nonsense decode",
+    "arg": plain
+}
+
+## output
+items = {"items": [
+    result_64
+    # result91
+]}
+
+sys.stdout.write(json.dumps(items))
